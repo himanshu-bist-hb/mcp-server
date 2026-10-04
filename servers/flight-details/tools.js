@@ -78,4 +78,7 @@ for (const t of TOOLS) {
   };
 }
 
-module.exports = { SERVER_INFO, TOOLS };
+// Also expose the flight-deals tool here so one endpoint covers all flight lookups.
+const deals = require("../flight-deals/tools");
+
+module.exports = { SERVER_INFO, TOOLS: [...TOOLS, ...deals.TOOLS] };

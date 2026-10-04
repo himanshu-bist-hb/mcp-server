@@ -5,8 +5,8 @@ Each server has its own endpoint: `https://<your-project>.vercel.app/<server>/mc
 
 | Endpoint | Tools | Data source |
 |---|---|---|
-| `/flight-details/mcp` | `find_cheapest_flights`, `search_flights` | SerpApi Google Flights |
-| `/flight-deals/mcp` | `find_flight_deals` | SerpApi Google Flights Deals |
+| `/flight-details/mcp` | `find_cheapest_flights`, `search_flights`, `find_flight_deals` | SerpApi Google Flights + Google Flights Deals |
+| `/flight-deals/mcp` | `find_flight_deals` | SerpApi Google Flights Deals (same tool as above, also kept on its own endpoint) |
 | `/hotel-details/mcp` | `find_hotel_deals`, `search_hotels` | SerpApi Google Hotels |
 | `/hotel-reviews/mcp` | `get_hotel_reviews`, `get_hotel_review_highlights` | SerpApi Google Hotels Reviews |
 | `/hotel-photos/mcp` | `get_hotel_photos` | SerpApi Google Hotels Photos |

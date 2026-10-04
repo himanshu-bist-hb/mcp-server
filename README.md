@@ -14,15 +14,18 @@ Each server has its own endpoint: `https://<your-project>.vercel.app/<server>/mc
 | `/google-news/mcp` | `search_travel_news`, `check_travel_disruptions` | SerpApi Google News |
 | `/tripadvisor-place/mcp` | `search_places`, `find_top_rated_places`, `get_place_details` | SerpApi Tripadvisor |
 | `/tripadvisor-reviews/mcp` | `get_place_reviews`, `get_review_summary` | SerpApi Tripadvisor Place |
+| `/pinelabs-payments/mcp` | `estimate_emi`, `get_emi_offers`, `create_payment_link`, `create_group_split_links`, `get_group_payment_status`, `get_payment_link_status` | Pine Labs Plural (UAT or prod) |
 | `/weather-forecast/mcp` | `get_weather`, `get_current_weather`, `score_trip_weather`, `compare_destinations_weather` | Open-Meteo (no key) |
 
 `GET /` returns this list as JSON. `GET /<server>/mcp` is a health check for that server.
 Prices are in INR.
 
+`/pinelabs-payments/mcp` needs `PINELABS_CLIENT_ID` and `PINELABS_CLIENT_SECRET` (and `PINELABS_ENV=uat|prod`). It only creates payment links; the traveler pays on Pine Labs' hosted page. In prod it refuses to run unless `MCP_AUTH_TOKEN` is set.
+
 ## Deploy
 
 1. Import this repo at vercel.com/new (framework preset: **Other**, no build command).
-2. Add the environment variable `SERPAPI_API_KEY`. Optionally add `MCP_AUTH_TOKEN` to require
+2. Add the environment variables `SERPAPI_API_KEY`, `PINELABS_CLIENT_ID`, `PINELABS_CLIENT_SECRET` and `PINELABS_ENV`. Optionally add `MCP_AUTH_TOKEN` to require
    an `Authorization: Bearer <token>` header on every endpoint.
 3. Deploy, then register each endpoint as its own MCP connector in AgenticOrg.
 

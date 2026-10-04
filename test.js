@@ -30,6 +30,7 @@ const CALLS = {
   "google-news": ["search_travel_news", { query: "Goa tourism", limit: 2 }],
   "tripadvisor-place": ["find_top_rated_places", { query: "beaches in Goa", limit: 2 }],
   "tripadvisor-reviews": ["get_review_summary", { place_id: "8519463" }],
+  "pinelabs-payments": ["estimate_emi", { amount_inr: 60000, tenures: [6, 12] }],
   "weather-forecast": ["score_trip_weather", { location: "Goa", start_date: tomorrow(3), end_date: tomorrow(5) }],
 };
 
@@ -42,7 +43,7 @@ server.listen(0, async () => {
   };
 
   const idx = await (await fetch(base + "/")).json();
-  check("index lists servers", idx.servers?.length === 10, `${idx.servers?.length} servers`);
+  check("index lists servers", idx.servers?.length === 11, `${idx.servers?.length} servers`);
 
   const unknown = await fetch(base + "/nope/mcp", { method: "POST", body: "{}" });
   check("unknown server -> 404", unknown.status === 404);

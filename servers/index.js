@@ -9,5 +9,6 @@ module.exports = {
   "google-news": { load: () => require("./google-news/tools"), summary: "Travel news and disruption alerts (Google News)" },
   "tripadvisor-place": { load: () => require("./tripadvisor-place/tools"), summary: "Tripadvisor attractions, restaurants and hotels" },
   "tripadvisor-reviews": { load: () => require("./tripadvisor-reviews/tools"), summary: "Tripadvisor reviews and review summaries" },
+  "pinelabs-payments": { load: () => require("./pinelabs-payments/tools"), summary: "Trip payments via Pine Labs: EMI options and group split payment links" },
   "weather-forecast": { load: () => require("./weather-forecast/tools"), summary: "Weather forecasts and trip weather scoring (Open-Meteo)" },
 };
